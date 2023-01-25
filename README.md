@@ -67,6 +67,16 @@ export default function App() {
                 touched={touched.name ? true : false}
                 errorMessage={errors.name} />
 
+              <RnTextInput2
+                borderBottomColor={'green'}
+                placeholder='Ad soyad giriniz'
+                value={values.name}
+                onChangeText={handleChange('name')}
+                text={'Ad soyad'}
+                errors={errors.name ? true : false}
+                touched={touched.name ? true : false}
+                errorMessage={errors.name} />
+
               <RnMaskInput
                 placeholder='Telefon numaranızı giriniz'
                 text={'Telefon'}

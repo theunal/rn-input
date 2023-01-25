@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Button, Text } from 'react-native';
-import { RnTextInput, RnMaskInput, RnSelect } from 'rn-input';
+import { RnTextInput, RnMaskInput, RnSelect, RnTextInput2 } from 'rn-input';
 import * as yup from 'yup';
 import { Formik } from "formik";
 
@@ -39,7 +39,7 @@ export default function App() {
   }
 
   return (
-    <View style={{ padding: 15 }}>
+    <View style={{ padding: 15, backgroundColor: '#EBE8E8', flex: 1 }}>
 
       <Formik
         initialValues={initialValue}
@@ -50,6 +50,16 @@ export default function App() {
           (
             <>
               <RnTextInput
+                placeholder='Ad soyad giriniz'
+                value={values.name}
+                onChangeText={handleChange('name')}
+                text={'Ad soyad'}
+                errors={errors.name ? true : false}
+                touched={touched.name ? true : false}
+                errorMessage={errors.name} />
+
+              <RnTextInput2
+                borderBottomColor={'green'}
                 placeholder='Ad soyad giriniz'
                 value={values.name}
                 onChangeText={handleChange('name')}
