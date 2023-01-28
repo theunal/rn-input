@@ -10,6 +10,8 @@ const RnSelect2 = ({
     borderBottomRightRadius,
     borderRadius,
 
+    marginTop,
+
     titleFontSize,
     titleFontWeight,
     titleMarginBottom,
@@ -56,7 +58,7 @@ const RnSelect2 = ({
     }).start(() => setDropdown(false));
 
     return (
-        <View style={{ marginTop: 50 }}>
+        <View style={{ marginTop: marginTop ? marginTop : undefined }}>
             <Text style={{
                 fontSize: titleFontSize ? titleFontSize : 15,
                 fontWeight: titleFontWeight ? titleFontWeight : '600',
