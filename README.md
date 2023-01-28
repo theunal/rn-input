@@ -9,7 +9,7 @@ npm install rn-input
 ```js
 import React, { useState } from 'react';
 import { View, Button, Text } from 'react-native';
-import { RnTextInput, RnMaskInput, RnSelect } from 'rn-input';
+import { RnTextInput, RnMaskInput, RnSelect, RnTextInput2, RnSelect2 } from 'rn-input';
 import * as yup from 'yup';
 import { Formik } from "formik";
 
@@ -20,7 +20,7 @@ export default function App() {
   const initialValue = {
     name: '',
     phoneNumber: '',
-    cityId: ''
+    cityId: 0
   }
 
   const formSchema = yup.object()
@@ -34,12 +34,12 @@ export default function App() {
         .min(16, ({ min }) => `En az ${min - 6} karakter girilmelidir.`)
         .required('Telefon numarası boş bırakılamaz.'),
 
-      cityId: yup.string().required().min(1)
+      cityId: yup.number().required().min(1)
     })
 
   const cityData = [
-    { key: '1', value: 'İstanbul' },
-    { key: '2', value: 'Ankara' }
+    { id: 1, value: 'İstanbul' },
+    { id: 2, value: 'Ankara' }
   ]
 
   const submit = (values: any) => {
@@ -48,7 +48,7 @@ export default function App() {
   }
 
   return (
-    <View style={{ padding: 15 }}>
+    <View style={{ padding: 15, backgroundColor: '#EBE8E8', flex: 1 }}>
 
       <Formik
         initialValues={initialValue}
@@ -99,6 +99,19 @@ export default function App() {
                 errorMessage={'Şehir seçilmedi.'}
               />
 
+              <RnSelect2
+                data={cityData}
+                firstValue={'-'}
+                title={'Şehir'}
+                setSelected={(x: any) => {
+                  setFieldValue('cityId', x);
+                  // operations...
+                }}
+                errors={errors.cityId ? true : false}
+                touched={touched.cityId ? true : false}
+                errorMessage={'Şehir seçilmedi.'}
+              />
+
               <Button title='submit' onPress={handleSubmit} />
             </>
           )
@@ -115,4 +128,5 @@ export default function App() {
     </View>
   );
 }
+
 ```

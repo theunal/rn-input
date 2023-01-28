@@ -5,7 +5,6 @@ export const globalStyles = StyleSheet.create({
     errorText: {
         fontSize: 10,
         color: 'red',
-        marginLeft: 1,
         marginTop: 2
     }
 })

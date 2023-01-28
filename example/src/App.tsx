@@ -11,7 +11,7 @@ export default function App() {
   const initialValue = {
     name: '',
     phoneNumber: '',
-    cityId: ''
+    cityId: 0
   }
 
   const formSchema = yup.object()
@@ -25,12 +25,12 @@ export default function App() {
         .min(16, ({ min }) => `En az ${min - 6} karakter girilmelidir.`)
         .required('Telefon numarası boş bırakılamaz.'),
 
-      cityId: yup.string().required().min(1)
+      cityId: yup.number().required().min(1)
     })
 
   const cityData = [
-    { key: '1', value: 'İstanbul' },
-    { key: '2', value: 'Ankara' }
+    { id: 1, value: 'İstanbul' },
+    { id: 2, value: 'Ankara' }
   ]
 
   const submit = (values: any) => {

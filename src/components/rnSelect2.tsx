@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useRef, useState } from "react";
 import { TouchableOpacity, Text, Image, View, TextInput, Animated, ScrollView } from "react-native";
+import { globalStyles } from "../global/globalStyles";
 
 const RnSelect2 = ({
     borderTopLeftRadius,
@@ -90,8 +91,8 @@ const RnSelect2 = ({
                 <Image
                     source={
                         !dropdown ?
-                            require('./select/assets/images/chevron.png') :
-                            require('./select/assets/images/chevron-reverse.png')
+                            require('../assets/chevron.png') :
+                            require('../assets/chevron-reverse.png')
                     }
                     resizeMode='contain'
                     style={{ width: 20, height: 20, marginRight: 15 }}
@@ -117,7 +118,7 @@ const RnSelect2 = ({
                         borderTopRightRadius: borderTopRightRadius ? borderTopRightRadius : 3
                     }}>
                         <Image
-                            source={require('./select/assets/images/search.png')}
+                            source={require('../assets/search.png')}
                             resizeMode='contain'
                             style={{ width: 20, height: 20, marginLeft: 10 }}
                         />
@@ -181,11 +182,7 @@ const RnSelect2 = ({
 
             {
                 (errors && touched) &&
-                <Text style={{
-                    fontSize: 10,
-                    color: 'red',
-                    marginTop: 2
-                }}>
+                <Text style={globalStyles.errorText}>
                     {errorMessage}
                 </Text>
             }
