@@ -33,8 +33,8 @@ const RnTextInput2 = ({
         Input Title
       </Text>
       <TextInput style={focus ?
-        styles(fontSize, borderRadius, backgroundColor, paddingLeft, borderBottomColor, borderBottomWidth).textFocus :
-        styles(fontSize, borderRadius, backgroundColor, paddingLeft, borderBottomColor, borderBottomWidth).text}
+        styles(fontSize, borderRadius, backgroundColor, paddingLeft, borderBottomColor, borderBottomWidth, (errors && touched)).textFocus :
+        styles(fontSize, borderRadius, backgroundColor, paddingLeft, borderBottomColor, borderBottomWidth, (errors && touched)).text}
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
         selectionColor={borderBottomColor ? borderBottomColor : 'darkblue'}
@@ -53,11 +53,11 @@ const RnTextInput2 = ({
 }
 
 function styles(fontSize: number, borderRadius: number, backgroundColor: string,
-  paddingLeft: number, borderBottomColor: string, borderBottomWidth: number) {
+  paddingLeft: number, borderBottomColor: string, borderBottomWidth: number, error: boolean) {
   return {
-    text: getStyles(fontSize, borderRadius, backgroundColor, paddingLeft, borderBottomWidth),
+    text: getStyles(fontSize, borderRadius, backgroundColor, paddingLeft, borderBottomWidth, error),
     textFocus: {
-      ...getStyles(fontSize, borderRadius, backgroundColor, paddingLeft, borderBottomWidth),
+      ...getStyles(fontSize, borderRadius, backgroundColor, paddingLeft, borderBottomWidth, error),
       borderBottomColor: borderBottomColor ? borderBottomColor : 'darkblue',
       borderBottomWidth: borderBottomWidth ? borderBottomWidth : 2
     }
@@ -65,14 +65,14 @@ function styles(fontSize: number, borderRadius: number, backgroundColor: string,
 }
 
 function getStyles(fontSize: number, borderRadius: number, backgroundColor: string,
-  paddingLeft: number, borderBottomWidth: number) {
+  paddingLeft: number, borderBottomWidth: number, error: boolean) {
   return {
     height: fontSize ? fontSize : 15 * 2.5,
     borderRadius: borderRadius ? borderRadius : 3,
     backgroundColor: backgroundColor ? backgroundColor : 'white',
     fontSize: fontSize ? fontSize : 15,
     paddingLeft: paddingLeft ? paddingLeft : 10,
-    borderBottomColor: backgroundColor ? backgroundColor : 'white',
+    borderBottomColor: error ? 'red' : backgroundColor ? backgroundColor : 'white',
     borderBottomWidth: borderBottomWidth ? borderBottomWidth : 2
   }
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Button, Text } from 'react-native';
-import { RnTextInput, RnMaskInput, RnSelect, RnTextInput2 } from 'rn-input';
+import { RnTextInput, RnMaskInput, RnSelect, RnTextInput2, RnSelect2 } from 'rn-input';
 import * as yup from 'yup';
 import { Formik } from "formik";
 
@@ -82,6 +82,19 @@ export default function App() {
                 firstValue={'-'}
                 title={'Şehir'}
                 onChangeText={(x: any) => {
+                  setFieldValue('cityId', x);
+                  // operations...
+                }}
+                errors={errors.cityId ? true : false}
+                touched={touched.cityId ? true : false}
+                errorMessage={'Şehir seçilmedi.'}
+              />
+
+              <RnSelect2
+                data={cityData}
+                firstValue={'-'}
+                title={'Şehir'}
+                setSelected={(x: any) => {
                   setFieldValue('cityId', x);
                   // operations...
                 }}
